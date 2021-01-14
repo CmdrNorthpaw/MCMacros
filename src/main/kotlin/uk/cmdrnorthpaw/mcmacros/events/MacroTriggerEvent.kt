@@ -1,19 +1,22 @@
 package uk.cmdrnorthpaw.mcmacros.events
 
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import net.fabricmc.fabric.api.event.EventFactory
+import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.util.ActionResult
 import uk.cmdrnorthpaw.mcmacros.model.Macro
 
-fun interface MacroTriggerEvent {
-    fun trigger(trigger: Macro): ActionResult
+fun interface MacroTriggerCallback {
+    fun trigger(trigger: Macro, caller: ClientPlayerEntity): ActionResult
 
     companion object {
-        val EVENT = EventFactory.createArrayBacked(MacroTriggerEvent::class.java) { listeners -> MacroTriggerEvent { macro ->
+        val EVENT = EventFactory.createArrayBacked(MacroTriggerCallback::class.java) { listeners -> MacroTriggerCallback { macro, caller ->
             listeners.forEach {
-                val result = it.trigger(macro)
-                if (result != ActionResult.PASS) return@MacroTriggerEvent result
+                val result = it.trigger(macro, caller)
+                if (result != ActionResult.PASS) return@MacroTriggerCallback result
             }
-            return@MacroTriggerEvent ActionResult.PASS
+            return@MacroTriggerCallback ActionResult.PASS
         }}
     }
 }
