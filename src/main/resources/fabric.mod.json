@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "MCMacros",
+  "version": "${version}",
+  "name": "MCMacros",
+  "description": "MCMacros is the Minecraft automation mod you've been waiting for! Define macros with concise YAML syntax and run them from a variety of triggers",
+  "authors": [
+    "CmdrNorthpaw"
+  ],
+  "contact": {
+    "repo": "https://github.com/CmdrNorthpaw/MCMacros"
+  },
+  "license": "MIT",
+  "icon": "assets/MCMacros/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "uk.cmdrnorthpaw.mcmacros.MCMacrosClient"
+    ],
+    "main": [
+      "uk.cmdrnorthpaw.mcmacros.MCMacros"
+    ]
+  },
+  "mixins": [
+    "MCMacros.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.0",
+    "fabric": "*",
+    "minecraft": "1.16.4",
+    "fabric-language-kotlin": ">=1.4.21"
+  }
+}
