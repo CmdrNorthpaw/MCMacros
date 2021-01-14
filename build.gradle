@@ -24,6 +24,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     implementation "com.charleskorn.kaml:kaml:0.26.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1"
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
 }
