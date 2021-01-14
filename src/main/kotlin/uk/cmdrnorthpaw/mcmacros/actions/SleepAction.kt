@@ -10,5 +10,5 @@ import uk.cmdrnorthpaw.mcmacros.model.Action
 @Serializable
 @SerialName("sleep")
 class SleepAction(val time: Int) : Action() {
-    override suspend fun act(player: ClientPlayerEntity): ActionResult { delay(time * 50L); return ActionResult.PASS }
+    override suspend fun act(player: ClientPlayerEntity): ActionResult { delay(time * 50L); return ActionResult.CONSUME }
 }
